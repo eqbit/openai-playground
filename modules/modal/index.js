@@ -1,15 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import css from './index.module.scss';
 
-type Props = {
-    open: boolean;
-    onClose: () => void;
-}
-
-export const Modal: React.FC<Props> = ({ open, children, onClose }) => {
-    useEffect(() => {
-        console.log('triggered')
-    }, [open])
+export const Modal = ({ open, children, onClose }) => {
     return (
         <>
             <div className={`${css.modal} ${open ? css.modalOpen : ''}`}>
