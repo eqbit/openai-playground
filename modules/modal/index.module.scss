@@ -1,0 +1,38 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0s;
+  visibility: hidden;
+
+  &Open {
+    transition: .3s;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: -1;
+}
+
+.inner {
+  height: 90%;
+
+  img {
+    height: 100%;
+  }
+}
