@@ -61,6 +61,23 @@
   margin: auto;
   max-width: 100%;
   resize: none;
+
+  &Wrapper {
+    position: relative;
+  }
+
+  &Length {
+    position: absolute;
+    right: 0;
+    top: -15px;
+    color: #252525;
+    font-size: 12px;
+    font-weight: bold;
+
+    &Error {
+      color: #ad3030;
+    }
+  }
 }
 
 .loading {

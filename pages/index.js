@@ -38,8 +38,10 @@ const Home = () => {
     }
   }
 
+  const isValid = input.length < 400 && input.length > 3;
+
   const handleTextAreaKeyPressed = ({ metaKey, keyCode }) => {
-    if (metaKey && keyCode === 13 && !isLoading) handleSubmit();
+    if (metaKey && keyCode === 13 && !isLoading && isValid) handleSubmit();
   }
 
   const handleClear = () => {
@@ -56,16 +58,24 @@ const Home = () => {
       <div className={css.wrapper}>
         <div className={css.leftContainer}>
           <form onSubmit={handleSubmit}>
-          <textarea
-              name="prompt"
-              placeholder="Enter a prompt"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className={css.textarea}
-              onKeyDown={handleTextAreaKeyPressed}
-          />
+
+            <div className={css.textareaWrapper}>
+              <textarea
+                  name="prompt"
+                  placeholder="Enter a prompt"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className={css.textarea}
+                  onKeyDown={handleTextAreaKeyPressed}
+              />
+
+              <span className={`${css.textareaLength} ${!isValid ? css.textareaLengthError : ''}`}>
+                {input.length} chars
+              </span>
+            </div>
+
             <div className={css.buttons}>
-              <input type="submit" value="Generate" className={css.submit} disabled={isLoading} />
+              <input type="submit" value="Generate" className={css.submit} disabled={isLoading || !isValid} />
               <button type="button" className={css.clear} onClick={handleClear}>Clear</button>
             </div>
           </form>
